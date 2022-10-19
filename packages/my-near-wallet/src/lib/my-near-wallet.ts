@@ -123,14 +123,19 @@ const MyNearWallet: WalletBehaviourFactory<
   };
 
   return {
-    async signIn({ contractId, methodNames }) {
+    async signIn({ contractId, methodNames, successUrl, failureUrl }) {
       const existingAccounts = getAccounts();
 
       if (existingAccounts.length) {
         return existingAccounts;
       }
 
-      await _state.wallet.requestSignIn({ contractId, methodNames });
+      await _state.wallet.requestSignIn({
+        contractId,
+        methodNames,
+        successUrl,
+        failureUrl,
+      });
 
       return getAccounts();
     },

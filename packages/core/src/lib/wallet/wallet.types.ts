@@ -27,6 +27,8 @@ export interface Account {
 export interface SignInParams {
   contractId: string;
   methodNames?: Array<string>;
+  successUrl?: string;
+  failureUrl?: string;
 }
 
 export interface VerifyOwnerParams {
